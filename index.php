@@ -14,20 +14,20 @@ abstract class Video implements VideoInterface
     public function __construct($name, $source)
     {
         $this->name = $name;
-$this->source = $source;
-}
+        $this->source = $source;
+    }
 
-public function getName(): string
-{
-return $this->name;
-}
+    public function getName(): string
+    {
+        return $this->name;
+    }
 
-public function getSource(): string
-{
-return $this->source;
-}
+    public function getSource(): string
+    {
+        return $this->source;
+    }
 
-abstract public function getEmbedCode(): string;
+    abstract public function getEmbedCode(): string;
 }
 
 class YouTubeVideo extends Video {
@@ -43,7 +43,20 @@ class YouTubeVideo extends Video {
     }
 }
 
-$videos = [
+class VimeoVideo extends Video {
+    private $videoId;
+
+    public function __construct($name, $videoId) {
+        parent::__construct($name, 'Vimeo');
+        $this->videoId = $videoId;
+    }
+
+    public function getEmbedCode(): string {
+        return '<iframe src="https://player.vimeo.com/video/' . $this->videoId . '" allowfullscreen></iframe>';
+    }
+}
+
+$videosyt = [
     new YouTubeVideo("Video 1", "4aj5cRgJcCY"),
     new YouTubeVideo("Video 2", "4aj5cRgJcCY"),
     new YouTubeVideo("Video 3", "4aj5cRgJcCY"),
@@ -51,6 +64,13 @@ $videos = [
     new YouTubeVideo("Video 5", "4aj5cRgJcCY")
 ];
 
+$videosvi = [
+    new VimeoVideo("Vimeo Video 1", "76979871"),
+    new VimeoVideo("Vimeo Video 2", "76979871"),
+    new VimeoVideo("Vimeo Video 3", "76979871"),
+    new VimeoVideo("Vimeo Video 4", "76979871"),
+    new VimeoVideo("Vimeo Video 5", "76979871")
+];
 ?>
 
 <!DOCTYPE html>
@@ -64,16 +84,26 @@ $videos = [
 </head>
 
 <body>
-<h1>YouTube Video Gallery</h1>
-<div class="container">
-    <?php foreach ($videos as $video): ?>
+    <h1>Video Gallery</h1>
+    <div class="container">
+        <?php foreach ($videosyt as $video): ?>
         <div class="video">
             <div class="title"><?php echo $video->getName(); ?></div>
             <?php echo $video->getEmbedCode(); ?>
             <div class="origin"><?php echo $video->getSource(); ?></div>
         </div>
-    <?php endforeach; ?>
-</div>
+        <?php endforeach; ?>
+    </div>
+
+    <div class="container">
+        <?php foreach ($videosvi as $video): ?>
+            <div class="video-entry">
+                <div class="title"><?php echo $video->getName(); ?></div>
+                <?php echo $video->getEmbedCode(); ?>
+                <div class="origin"><?php echo $video->getSource(); ?></div>
+            </div>
+        <?php endforeach; ?>
+    </div>
 
 </body>
 
