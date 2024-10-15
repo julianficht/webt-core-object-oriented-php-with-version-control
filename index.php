@@ -14,21 +14,42 @@ abstract class Video implements VideoInterface
     public function __construct($name, $source)
     {
         $this->name = $name;
-        $this->source = $source;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getSource(): string
-    {
-        return $this->source;
-    }
-
-    abstract public function getEmbedCode(): string;
+$this->source = $source;
 }
+
+public function getName(): string
+{
+return $this->name;
+}
+
+public function getSource(): string
+{
+return $this->source;
+}
+
+abstract public function getEmbedCode(): string;
+}
+
+class YouTubeVideo extends Video {
+    private $videoId;
+
+    public function __construct($name, $videoId) {
+        parent::__construct($name, 'YouTube');
+        $this->videoId = $videoId;
+    }
+
+    public function getEmbedCode(): string {
+        return '<iframe src="https://www.youtube.com/embed/' . $this->videoId . '" allowfullscreen></iframe>';
+    }
+}
+
+$videos = [
+    new YouTubeVideo("Video 1", "4aj5cRgJcCY"),
+    new YouTubeVideo("Video 2", "4aj5cRgJcCY"),
+    new YouTubeVideo("Video 3", "4aj5cRgJcCY"),
+    new YouTubeVideo("Video 4", "4aj5cRgJcCY"),
+    new YouTubeVideo("Video 5", "4aj5cRgJcCY")
+];
 
 ?>
 
@@ -43,129 +64,15 @@ abstract class Video implements VideoInterface
 </head>
 
 <body>
-
-<h1>Video Gallery</h1>
+<h1>YouTube Video Gallery</h1>
 <div class="container">
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
-    <div class="video">
-        <div class="title">Title</div>
-        <iframe src="https://www.youtube.com/embed/4aj5cRgJcCY" allowfullscreen></iframe>
-        <div class="origin">YouTube</div>
-    </div>
-
+    <?php foreach ($videos as $video): ?>
+        <div class="video">
+            <div class="title"><?php echo $video->getName(); ?></div>
+            <?php echo $video->getEmbedCode(); ?>
+            <div class="origin"><?php echo $video->getSource(); ?></div>
+        </div>
+    <?php endforeach; ?>
 </div>
 
 </body>
