@@ -1,3 +1,37 @@
+<?php
+interface VideoInterface {
+    public function getName(): string;
+    public function getSource(): string;
+    public function getEmbedCode(): string;
+}
+
+
+abstract class Video implements VideoInterface
+{
+    protected $name;
+    protected $source;
+
+    public function __construct($name, $source)
+    {
+        $this->name = $name;
+        $this->source = $source;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getSource(): string
+    {
+        return $this->source;
+    }
+
+    abstract public function getEmbedCode(): string;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
