@@ -24,10 +24,11 @@ webt-core-object-oriented-php-with-version-control was forked for the team
 - Each teammember has access to the forked repository (read/write)
 
 ## User Story 3
-*As a Developer I want to have an own development branch in the repository, so that I can work on tasks autonomously.*
+*As a Developer I want to have separate feature-branches in the repository, so that I can work on tasks autonomously.*
 
 ### Acceptance Criteria
-- A branch for each team member is available on the team repository
+- A branch for each feature of this exercise is available on the teams repository (at least one for each user story)
+- The state of each of the feature-branches is merged into the main branch
 
 ## User Story 4
 *As a Developer I want to create a first preview site as plain static HTML version so that the customer can get an impression of the website.*
