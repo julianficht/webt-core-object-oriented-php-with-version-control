@@ -97,7 +97,7 @@ $videosvi = [
 
     <div class="container">
         <?php foreach ($videosvi as $video): ?>
-            <div class="video-entry">
+            <div class="video">
                 <div class="title"><?php echo $video->getName(); ?></div>
                 <?php echo $video->getEmbedCode(); ?>
                 <div class="origin"><?php echo $video->getSource(); ?></div>
